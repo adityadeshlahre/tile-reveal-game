@@ -1,0 +1,48 @@
+{
+  "tileCols": 4,
+  "tileRows": 4,
+  "rounds": [
+    {
+      "id": "0",
+      "image": "/images/1.jpeg",
+      "answer": "Mahendra Singh Dhoni",
+      "hints": "https://en.wikipedia.org/wiki/MS_Dhoni"
+    },
+    {
+      "id": "1",
+      "image": "/images/2.jpeg",
+      "answer": "Virat Kohli",
+      "hints": "https://en.wikipedia.org/wiki/Virat_Kohli"
+    },
+    {
+      "id": "2",
+      "image": "/images/3.jpeg",
+      "answer": "Alia Bhatt",
+      "hints": "https://en.wikipedia.org/wiki/Alia_Bhatt"
+    },
+    {
+      "id": "3",
+      "image": "/images/4.jpeg",
+      "answer": "Priyanka Chopra",
+      "hints": "https://en.wikipedia.org/wiki/Priyanka_Chopra"
+    },
+    {
+      "id": "4",
+      "image": "/images/5.jpg",
+      "answer": "Garry Tan",
+      "hints": "https://en.wikipedia.org/wiki/Garry_Tan"
+    },
+    {
+      "id": "5",
+      "image": "/images/6.jpeg",
+      "answer": "Terry A. Davis",
+      "hints": "https://en.wikipedia.org/wiki/Terry_A._Davis"
+    },
+    {
+      "id": "6",
+      "image": "/images/7.jpeg",
+      "answer": "Linus Torvalds",
+      "hints": "https://en.wikipedia.org/wiki/Linus_Torvalds"
+    }
+  ]
+}
