@@ -15,8 +15,8 @@ import MobileBlock from '../components/MobileBlock.astro';
       <span id="round-label" class="font-semibold text-sm text-[#0a0a0a]"></span>
     </div>
 
-    <div class="relative w-full aspect-square bg-[#0a0a0a] rounded-2xl overflow-hidden shadow-[0_4px_24px_rgba(0,0,0,0.12)]">
-      <img id="board-image" class="block w-full h-full object-contain bg-[#1a1a1a]" alt="" />
+    <div class="relative w-full bg-[#0a0a0a] rounded-2xl overflow-hidden shadow-[0_4px_24px_rgba(0,0,0,0.12)]">
+      <img id="board-image" class="block w-full bg-[#1a1a1a]" alt="" />
       <div id="tile-grid" class="absolute inset-0 grid gap-0.5 p-0.5"></div>
     </div>
 
@@ -25,11 +25,11 @@ import MobileBlock from '../components/MobileBlock.astro';
       <div id="answer-text" class="text-[28px] font-bold tracking-tight text-[#0a0a0a] min-h-[34px]">???</div>
     </div>
 
-    <div class="flex gap-2 justify-center py-1 pb-4 flex-wrap">
-      <button id="btn-prev" class="min-w-20 px-5 py-2.5 rounded-xl font-semibold text-sm bg-[#e5e5e5] text-[#0a0a0a] hover:bg-[#d0d0d0] disabled:opacity-30 disabled:cursor-default transition-opacity border-none cursor-pointer font-sans" disabled>Prev</button>
-      <button id="btn-reset" class="min-w-20 px-5 py-2.5 rounded-xl font-semibold text-sm bg-[#e5e5e5] text-[#0a0a0a] hover:bg-[#d0d0d0] disabled:opacity-30 disabled:cursor-default transition-opacity border-none cursor-pointer font-sans" disabled>Reset</button>
-      <button id="btn-reveal-all" class="min-w-20 px-5 py-2.5 rounded-xl font-semibold text-sm bg-[#0a0a0a] text-white hover:bg-[#1f1f1f] transition-opacity border-none cursor-pointer font-sans">Reveal All</button>
-      <button id="btn-next" class="min-w-20 px-5 py-2.5 rounded-xl font-semibold text-sm bg-[#e5e5e5] text-[#0a0a0a] hover:bg-[#d0d0d0] disabled:opacity-30 disabled:cursor-default transition-opacity border-none cursor-pointer font-sans" disabled>Next</button>
+    <div class="flex gap-3 justify-center py-1 pb-4">
+      <button id="btn-prev" class="flex-1 px-3 py-3 rounded-xl font-semibold text-base bg-[#e5e5e5] text-[#0a0a0a] hover:bg-[#d0d0d0] disabled:opacity-30 disabled:cursor-default transition-opacity border-none cursor-pointer font-sans" disabled>Prev</button>
+      <button id="btn-reset" class="flex-1 px-3 py-3 rounded-xl font-semibold text-base bg-[#e5e5e5] text-[#0a0a0a] hover:bg-[#d0d0d0] disabled:opacity-30 disabled:cursor-default transition-opacity border-none cursor-pointer font-sans" disabled>Reset</button>
+      <button id="btn-reveal-all" class="flex-1 px-3 py-3 rounded-xl font-semibold text-base bg-[#0a0a0a] text-white hover:bg-[#1f1f1f] transition-opacity border-none cursor-pointer font-sans">Reveal All</button>
+      <button id="btn-next" class="flex-1 px-3 py-3 rounded-xl font-semibold text-base bg-[#e5e5e5] text-[#0a0a0a] hover:bg-[#d0d0d0] disabled:opacity-30 disabled:cursor-default transition-opacity border-none cursor-pointer font-sans" disabled>Next</button>
     </div>
   </div>
 </Layout>

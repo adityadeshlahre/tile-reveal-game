@@ -1,6 +1,6 @@
 {
-  "tileCols": 4,
-  "tileRows": 4,
+  "tileCols": 5,
+  "tileRows": 5,
   "rounds": [
     {
       "id": "0",
@@ -43,6 +43,36 @@
       "image": "/images/7.jpeg",
       "answer": "Linus Torvalds",
       "hints": "https://en.wikipedia.org/wiki/Linus_Torvalds"
+    },
+    {
+      "id": "7",
+      "image": "/images/8.jpeg",
+      "answer": "Sam Altman",
+      "hints": "https://en.wikipedia.org/wiki/Sam_Altman"
+    },
+    {
+      "id": "8",
+      "image": "/images/9.jpeg",
+      "answer": "Elon Musk",
+      "hints": "https://en.wikipedia.org/wiki/Elon_Musk"
+    },
+    {
+      "id": "9",
+      "image": "/images/10.jpeg",
+      "answer": "Dario Amodei",
+      "hints": "https://en.wikipedia.org/wiki/Dario_Amodei"
+    },
+    {
+      "id": "10",
+      "image": "/images/11.jpeg",
+      "answer": "Mark Zuckerberg",
+      "hints": "https://en.wikipedia.org/wiki/Mark_Zuckerberg"
+    },
+    {
+      "id": "11",
+      "image": "/images/12.png",
+      "answer": "Andrej Karpathy",
+      "hints": "https://en.wikipedia.org/wiki/Andrej_Karpathy"
     }
   ]
 }
