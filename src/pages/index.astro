@@ -7,7 +7,8 @@ import MobileBlock from '../components/MobileBlock.astro';
   <MobileBlock />
   <div id="game-app" class="max-w-[520px] mx-auto p-8 flex flex-col min-h-screen max-sm:hidden">
     <header class="text-center pb-2">
-      <h1 class="text-2xl font-bold tracking-tight text-[#0a0a0a]">Tile Reveal</h1>
+      <h1 class="text-6xl font-bold tracking-tight text-[#0a0a0a]">Tile Reveal Game</h1>
+      <h1 class="text-2xl font-bold tracking-tight text-[#0a0a0a]">Guess Who</h1>
     </header>
 
     <div id="round-bar" class="flex items-center py-3 min-h-[44px]">
@@ -25,9 +26,10 @@ import MobileBlock from '../components/MobileBlock.astro';
     </div>
 
     <div class="flex gap-2 justify-center py-1 pb-4 flex-wrap">
+      <button id="btn-prev" class="min-w-20 px-5 py-2.5 rounded-xl font-semibold text-sm bg-[#e5e5e5] text-[#0a0a0a] hover:bg-[#d0d0d0] disabled:opacity-30 disabled:cursor-default transition-opacity border-none cursor-pointer font-sans" disabled>Prev</button>
       <button id="btn-reset" class="min-w-20 px-5 py-2.5 rounded-xl font-semibold text-sm bg-[#e5e5e5] text-[#0a0a0a] hover:bg-[#d0d0d0] disabled:opacity-30 disabled:cursor-default transition-opacity border-none cursor-pointer font-sans" disabled>Reset</button>
       <button id="btn-reveal-all" class="min-w-20 px-5 py-2.5 rounded-xl font-semibold text-sm bg-[#0a0a0a] text-white hover:bg-[#1f1f1f] transition-opacity border-none cursor-pointer font-sans">Reveal All</button>
-      <button id="btn-random" class="min-w-20 px-5 py-2.5 rounded-xl font-semibold text-sm bg-[#e5e5e5] text-[#0a0a0a] hover:bg-[#d0d0d0] transition-opacity border-none cursor-pointer font-sans">Random</button>
+      <button id="btn-next" class="min-w-20 px-5 py-2.5 rounded-xl font-semibold text-sm bg-[#e5e5e5] text-[#0a0a0a] hover:bg-[#d0d0d0] disabled:opacity-30 disabled:cursor-default transition-opacity border-none cursor-pointer font-sans" disabled>Next</button>
     </div>
   </div>
 </Layout>
@@ -36,15 +38,15 @@ import MobileBlock from '../components/MobileBlock.astro';
   (() => {
     const TILE_CLASSES = [
       'relative',
-      'bg-[linear-gradient(145deg,#1a1a2e,#16213e)]',
+      'bg-[linear-gradient(145deg,#3a3a3a,#2e2e2e)]',
       'border',
-      'border-[#2a2a4e]',
+      'border-[#4a4a4a]',
       'rounded',
       'cursor-pointer',
       'transition-opacity',
       'duration-200',
-      'hover:bg-[linear-gradient(145deg,#2a2a4e,#1a1a2e)]',
-      'active:bg-[linear-gradient(145deg,#0f0f1e,#0d0d1e)]',
+      'hover:bg-[linear-gradient(145deg,#4a4a4a,#3a3a3a)]',
+      'active:bg-[linear-gradient(145deg,#2a2a2a,#1e1e1e)]',
       'after:absolute',
       'after:inset-0',
       "after:bg-[linear-gradient(180deg,rgba(255,255,255,0.05),transparent_50%)]",
@@ -64,7 +66,8 @@ import MobileBlock from '../components/MobileBlock.astro';
       tileGrid: $('tile-grid'),
       answerText: $('answer-text'),
       roundLabel: $('round-label'),
-      btnRandom: $('btn-random'),
+      btnPrev: $('btn-prev'),
+      btnNext: $('btn-next'),
       btnRevealAll: $('btn-reveal-all'),
       btnReset: $('btn-reset'),
     };
@@ -141,27 +144,33 @@ import MobileBlock from '../components/MobileBlock.astro';
       updateButtons();
     }
 
-    function randomRound() {
-      const total = state.config.rounds.length;
-      let idx;
-      do {
-        idx = Math.floor(Math.random() * total);
-      } while (idx === state.currentRound && total > 1);
-      state.currentRound = idx;
-      renderRound();
+    function prevRound() {
+      if (state.currentRound > 0) {
+        state.currentRound--;
+        renderRound();
+      }
+    }
+
+    function nextRound() {
+      if (state.currentRound < state.config.rounds.length - 1) {
+        state.currentRound++;
+        renderRound();
+      }
     }
 
     function updateButtons() {
+      el.btnPrev.disabled = state.currentRound === 0;
+      el.btnNext.disabled = state.currentRound === state.config.rounds.length - 1;
       el.btnReset.disabled = state.revealedTiles.size === 0;
     }
 
-    el.btnRandom.addEventListener('click', randomRound);
+    el.btnPrev.addEventListener('click', prevRound);
+    el.btnNext.addEventListener('click', nextRound);
     el.btnRevealAll.addEventListener('click', revealAll);
     el.btnReset.addEventListener('click', reset);
 
     loadConfig()
       .then(() => {
-      state.currentRound = Math.floor(Math.random() * state.config.rounds.length);
       renderRound();
       updateButtons();
       })
