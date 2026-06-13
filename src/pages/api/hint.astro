@@ -1,0 +1,53 @@
+---
+import { env } from "cloudflare:workers";
+
+const url = new URL(Astro.request.url);
+const wikiUrl = url.searchParams.get('url');
+
+if (!wikiUrl) {
+  return new Response(JSON.stringify({ error: 'Missing ?url=' }), { status: 400 });
+}
+
+const title = wikiUrl.split('/wiki/')[1];
+if (!title) {
+  return new Response(JSON.stringify({ error: 'Invalid Wikipedia URL' }), { status: 400 });
+}
+
+const apiUrl = `https://en.wikipedia.org/w/api.php?action=query&prop=extracts&exintro=true&explaintext=true&titles=${encodeURIComponent(title)}&format=json`;
+
+const wikiRes = await fetch(apiUrl, {
+  headers: { 'User-Agent': 'tile-reveal-game/1.0' },
+});
+
+if (!wikiRes.ok) {
+  return new Response(JSON.stringify({ error: 'Failed to fetch Wikipedia' }), { status: 502 });
+}
+
+const wikiData = await wikiRes.json();
+const pages = wikiData.query?.pages;
+if (!pages) {
+  return new Response(JSON.stringify({ error: 'No Wikipedia data' }), { status: 502 });
+}
+
+const page = Object.values(pages)[0] as { extract?: string };
+const extract = page?.extract?.slice(0, 2000);
+if (!extract) {
+  return new Response(JSON.stringify({ error: 'No extract found' }), { status: 502 });
+}
+
+const summaryRes = await env.AI.run('@cf/meta/llama-3.2-3b-instruct', {
+  prompt: `Summarize this Wikipedia article into 2-3 concise sentences about who this person is:\n\n${extract}`,
+});
+
+const summary = (summaryRes.response || '').trim();
+
+const hintRes = await env.AI.run('@cf/meta/llama-3.2-3b-instruct', {
+  prompt: `Given this summary of a person, generate a single short one-line hint about who they are. Do not use the person's name. Keep it under 15 words. Make it tricky but fair.\n\n${summary}`,
+});
+
+const hint = (hintRes.response || '').trim();
+
+return new Response(JSON.stringify({ hint }), {
+  headers: { 'content-type': 'application/json' },
+});
+---

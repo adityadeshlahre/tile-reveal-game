@@ -5,26 +5,26 @@
     {
       "id": "0",
       "image": "/images/1.jpeg",
-      "answer": "Mahendra Singh Dhoni",
-      "hints": "https://en.wikipedia.org/wiki/MS_Dhoni"
+      "answer": "Ritesh Agarwal",
+      "hints": "https://en.wikipedia.org/wiki/Ritesh_Agarwal"
     },
     {
       "id": "1",
       "image": "/images/2.jpeg",
-      "answer": "Virat Kohli",
-      "hints": "https://en.wikipedia.org/wiki/Virat_Kohli"
+      "answer": "Vinod Khosla",
+      "hints": "https://en.wikipedia.org/wiki/Vinod_Khosla"
     },
     {
       "id": "2",
       "image": "/images/3.jpeg",
-      "answer": "Alia Bhatt",
-      "hints": "https://en.wikipedia.org/wiki/Alia_Bhatt"
+      "answer": "Tim Cook",
+      "hints": "https://en.wikipedia.org/wiki/Tim_Cook"
     },
     {
       "id": "3",
       "image": "/images/4.jpeg",
-      "answer": "Priyanka Chopra",
-      "hints": "https://en.wikipedia.org/wiki/Priyanka_Chopra"
+      "answer": "Jeff Bezos",
+      "hints": "https://en.wikipedia.org/wiki/Jeff_Bezos"
     },
     {
       "id": "4",

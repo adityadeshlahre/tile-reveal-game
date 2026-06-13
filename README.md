@@ -7,7 +7,7 @@ Tile-reveal guess-who web app. Host clicks to reveal tiles on a portrait — wat
 - **Astro 6** + **`@astrojs/cloudflare`** adapter — SSR on Cloudflare Workers
 - **Tailwind v4** — all CSS
 - **Bun** — package manager
-- **Cloudflare Workers AI** — AI-powered hints (binding via `Astro.locals.env.AI`)
+- **Cloudflare Workers AI** — AI-powered hints (binding via `import { env } from "cloudflare:workers"`)
 
 ## Commands
 
