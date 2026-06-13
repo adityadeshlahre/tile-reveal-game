@@ -1,5 +1,6 @@
 ---
 import { env } from "cloudflare:workers";
+export const prerender = false;
 
 const url = new URL(Astro.request.url);
 const wikiUrl = url.searchParams.get('url');
